@@ -14,4 +14,17 @@ defmodule BrickTest do
     assert actual.reflection in [true, false]
     assert actual.rotation in Enum.to_list(0..270//90)
   end
+
+  test "should manipulate brick" do
+    actual = 
+      new_brick()
+      |> left
+      |> right
+      |> right
+      |> down
+      |> spin_90
+      |> spin_90
+    assert actual.location == {41, 1}
+    assert actual.rotation == 180
+  end
 end
